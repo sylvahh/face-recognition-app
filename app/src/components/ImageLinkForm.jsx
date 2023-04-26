@@ -22,18 +22,24 @@ const ImageLinkForm = ({ getImgUtils, userData }) => {
     e.preventDefault();
     const data = {
       id: id,
+      imageUrl : inputLink
     };
-
-    makeRequest(inputLink)
-      .then((response) => {
-        makeApiRequest('/image', 'PUT', data).then((response) => {
-          console.log(response.data);
-          setBtnClicked(true);
-        });
-        setBoundingBox(response);
-        calculateBoundingBox(response);
-      })
-      .finally(setBtnClicked(false));
+    makeApiRequest('/image', 'PUT', data).then((response) => {
+      setBoundingBox(response.data.boundingBoxes);
+      setBtnClicked(true);
+    }).catch(error => console.log(error)).finally(
+      setBtnClicked(false)
+    )
+    // makeRequest(inputLink)
+    //   .then((response) => {
+    //     makeApiRequest('/image', 'PUT', data).then((response) => {
+    //       console.log(response.data);
+    //       setBtnClicked(true);
+    //     });
+    //     setBoundingBox(response);
+    //     calculateBoundingBox(response);
+    //   })
+    //   .finally(setBtnClicked(false));
   };
   useEffect(() => {
     if (userData && (entries === '' || btnClicked)) {

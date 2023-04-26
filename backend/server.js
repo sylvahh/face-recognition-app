@@ -1,7 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcrypt')
-const cors = require('cors')
-const {getUsers, getUserById, createUser, updateEntries, signIn } = require('./Queries');
+const cors = require('cors');
+const { signIn, getUsers, createUser, getUserById, updateEntries } = require('./routes');
+// const {getUsers, getUserById, createUser, updateEntries, signIn } = require('./Queries');
 
 const data = {
     users: [
