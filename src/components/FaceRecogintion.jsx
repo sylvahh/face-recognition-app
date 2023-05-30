@@ -1,14 +1,12 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { memo, useState } from 'react';
 import { calculateBoundingBox } from '../utilities';
 
 const FaceRecogintion = ({ imgUtils = {} }) => {
   const { link, boundingBox } = imgUtils;
-  const [boxValues, setBoxValues] = useState([])
-
+  const [boxValues, setBoxValues] = useState([]);
 
   const handleImageLoad = () => {
     setBoxValues(calculateBoundingBox(boundingBox));
-
   };
 
   function isObjectEmpty(obj) {
@@ -20,16 +18,17 @@ const FaceRecogintion = ({ imgUtils = {} }) => {
     return true;
   }
 
-  const boundingBoxes = ({top, right, bottom, left}, idx) => {
-return <div key={idx}
-className='bounding-box  '
-style={{ bottom:bottom, top: top, right: right,   left:left }}
-></div>
-  }
+  const boundingBoxes = ({ top, right, bottom, left }, idx) => {
+    return (
+      <div
+        key={idx}
+        className='bounding-box  '
+        style={{ bottom: bottom, top: top, right: right, left: left }}
+      ></div>
+    );
+  };
 
-  const mappedBoundingBoxes = boxValues.map(boundingBoxes)
-   
-
+  const mappedBoundingBoxes = boxValues.map(boundingBoxes);
 
   return (
     <div className='flex justify-center mt-10 mx-auto relative'>
@@ -41,9 +40,7 @@ style={{ bottom:bottom, top: top, right: right,   left:left }}
           style={{ width: '500px', height: 'auto' }}
           onLoad={handleImageLoad}
         />
-        { !isObjectEmpty(boxValues)  && (
-          mappedBoundingBoxes
-        )}
+        {!isObjectEmpty(boxValues) && mappedBoundingBoxes}
       </div>
     </div>
   );

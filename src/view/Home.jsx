@@ -12,8 +12,6 @@ const Home = ({ getImgUtils, imgUtils  }) => {
     if (getUser) {
       setUserData(getUser)
     }
-    // makeApiRequest(`/user/${user.id}`, 'GET', {}).then( response => setUserData(response))
-    console.log(getUser)
   }, [])
   
   return (

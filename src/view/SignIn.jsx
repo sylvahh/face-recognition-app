@@ -19,7 +19,7 @@ const SignIn = () => {
         password
 
       }
-      makeApiRequest('/sign-in', 'POST', data).then(response => { console.log(response); storeUserData(response.data);  Navigate('/home')}).catch( error => console.log(error))
+      makeApiRequest('/sign-in', 'POST', data).then(response => { storeUserData(response.data);  Navigate('/home')}).catch( error => console.log(error))
     } 
   return (
     <div className='pa4 black-80 '>

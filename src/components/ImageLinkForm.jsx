@@ -1,6 +1,5 @@
-import React, { memo, useEffect, useState } from 'react';
-import { calculateBoundingBox, makeApiRequest, makeRequest } from '../utilities';
-import { json } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {  makeApiRequest } from '../utilities';
 
 const ImageLinkForm = ({ getImgUtils, userData }) => {
   const [inputLink, setInputLink] = useState('');
@@ -30,16 +29,7 @@ const ImageLinkForm = ({ getImgUtils, userData }) => {
     }).catch(error => console.log(error)).finally(
       setBtnClicked(false)
     )
-    // makeRequest(inputLink)
-    //   .then((response) => {
-    //     makeApiRequest('/image', 'PUT', data).then((response) => {
-    //       console.log(response.data);
-    //       setBtnClicked(true);
-    //     });
-    //     setBoundingBox(response);
-    //     calculateBoundingBox(response);
-    //   })
-    //   .finally(setBtnClicked(false));
+
   };
   useEffect(() => {
     if (userData && (entries === '' || btnClicked)) {
