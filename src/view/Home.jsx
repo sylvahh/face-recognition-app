@@ -3,7 +3,6 @@ import ImageLinkForm from '../components/ImageLinkForm'
 import FaceRecogintion from '../components/FaceRecogintion'
 import Logo from '../components/Logo'
 import ParticlesBg from 'particles-bg'
-import { makeApiRequest } from '../utilities'
 
 const Home = ({ getImgUtils, imgUtils  }) => {
   const [userData, setUserData] = useState()
@@ -12,7 +11,7 @@ const Home = ({ getImgUtils, imgUtils  }) => {
     if (getUser) {
       setUserData(getUser)
     }
-  }, [])
+  }, [getUser])
   
   return (
       <div className=''>

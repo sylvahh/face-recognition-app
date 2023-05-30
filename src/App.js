@@ -1,9 +1,5 @@
 import './App.css';
 import Navigation from './components/Navigation';
-import ParticlesBg from 'particles-bg';
-import Logo from './components/Logo';
-import ImageLinkForm from './components/ImageLinkForm';
-import FaceRecogintion from './components/FaceRecogintion';
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './view/Home';
