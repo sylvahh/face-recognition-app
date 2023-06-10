@@ -17,7 +17,7 @@ export async function makeApiRequest(url, method, body, token) {
     let response = await fetch(baseUrl + url, options);
     let data = await response.json();
     if (!response.ok) {
-      throw new Error();
+      throw new Error(data.message);
     }
     return data;
   } catch (error) {

@@ -6,6 +6,7 @@ import { makeApiRequest } from '../utilities';
 const SignIn = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [response, setResponse] =useState('')
   const Navigate = useNavigate()
   const storeUserData = (data) => {
     data = JSON.stringify(data)
@@ -19,7 +20,7 @@ const SignIn = () => {
         password
 
       }
-      makeApiRequest('/sign-in', 'POST', data).then(response => { storeUserData(response.data);  Navigate('/home')}).catch( error => console.log(error))
+      makeApiRequest('/sign-in', 'POST', data).then(response => {  storeUserData(response.data);  Navigate('/home')}).catch( error => setResponse(error.message))
     } 
   return (
     <div className='pa4 black-80 '>
@@ -28,6 +29,7 @@ const SignIn = () => {
         <fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
           <legend className='f4 fw6 ph0 mh0'>Sign In</legend>
           <div className='mt3'>
+        <span className=' text-red-600'>{response}</span>
             <label className='db fw6 lh-copy f6' htmlFor='email'>
               Email
             </label>
@@ -63,14 +65,14 @@ const SignIn = () => {
             value='Sign in'
           />
         </div>
-        <div className='lh-copy mt3'>
+        {/* <div className='lh-copy mt3'>
           <a href='#0' className='f6 link dim black db b'>
             Sign up
           </a>
           <a href='#0' className='f6 link dim black db'>
             Forgot your password?
           </a>
-        </div>
+        </div> */}
       </form>
     </div>
   );

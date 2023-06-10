@@ -7,6 +7,7 @@ const Register = () => {
   const [userName, setUserName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [response, setResponse] =useState('')
 
     const Navigate = useNavigate()
     const handleRegister = (e) => {
@@ -16,7 +17,7 @@ const Register = () => {
         email,
         password
       }
-      makeApiRequest('/register','POST',data).then(Navigate('/'))
+      makeApiRequest('/register','POST',data).then().catch( error => setResponse(error.message))
     } 
   return (
     <div className='pa4 black-80 '>
@@ -25,6 +26,8 @@ const Register = () => {
         <fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
           <legend className='f4 fw6 ph0 mh0'>Sign up</legend>
           <div className='mt3'>
+        <span className=' text-red-600'>{response}</span>
+
             <label className='db fw6 lh-copy f6' htmlFor='userName'>
              Username
             </label>
